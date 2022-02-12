@@ -61,7 +61,7 @@ public class CommandDefault {
 	}
 
 
-	@Command(name = "info", description = "information sur un joueur", type = ExecutorType.USER)
+	@Command(name = "info", description = "informations sur un joueur", type = ExecutorType.USER)
 	private void info(MessageChannel channel, Message msg, JDA jda) {
 		Member mem = msg.getMember();
 		if (msg.getMentionedMembers().size() != 0) {
@@ -94,7 +94,7 @@ public class CommandDefault {
 				}
 			options.add(new SelectOptionImpl(arg, arg));
 		}
-		SelectMenuImpl selectionMenu = new SelectMenuImpl(message.split("\n")[0], "selectionnez un choix", 1, 1, false, options);
+		SelectMenuImpl selectionMenu = new SelectMenuImpl(message.split("\n")[0], "Faire un choix", 1, 1, false, options);
 		msg = msg.getChannel().sendMessageEmbeds(new EmbedBuilder().setDescription("chargement").build()).setActionRow(selectionMenu).complete();
 		PollMessage pm = new PollMessage(msg.getId(), Arrays.asList(args), author, msg.getGuild(), msg.getTextChannel().getId(), message.split("\n")[0]);
 		msg.editMessageEmbeds(pm.getMessageEmbed(msg.getGuild())).queue();
